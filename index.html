@@ -466,8 +466,34 @@
     /* ===== RESPONSIVE ===== */
     @media (max-width: 700px) {
       nav { display: none; }
-      .hero { padding: 60px 20px 52px; }
       .members-grid { grid-template-columns: 1fr 1fr; }
+
+      /* ヘッダー */
+      .header-inner { height: auto; padding: 10px 16px; }
+      .header-logo { font-size: 0.85rem; gap: 8px; }
+      .header-logo img { height: 36px; }
+      .header-logo span { font-size: 0.65rem; }
+
+      /* 表紙 */
+      .hero-top {
+        padding: 28px 16px 20px;
+      }
+      .hero h1 {
+        font-size: 1.4rem;
+        letter-spacing: 0.02em;
+        word-break: keep-all;
+        white-space: nowrap;
+      }
+      .hero-dept {
+        font-size: 0.68rem;
+        letter-spacing: 0.02em;
+      }
+      .hero-divider {
+        margin: 0 auto 12px;
+      }
+      .hero-band img {
+        margin-top: -10px;
+      }
     }
   </style>
 </head>
