@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>遺伝子・血液情報検査学 | 群馬パース大学</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
   <style>
     :root {
       --primary: #1a2e4a;
@@ -49,6 +49,14 @@
       font-size: 1.05rem;
       font-weight: 700;
       letter-spacing: 0.02em;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .header-logo img {
+      height: 58px;
+      width: auto;
     }
 
     .header-logo span {
@@ -77,49 +85,55 @@
     }
 
     .hero-top {
-      padding: 52px 24px 40px;
-      background: linear-gradient(135deg, #dde7f5 0%, #eaf0f9 100%);
+      padding: 70px 24px 60px;
+      background: linear-gradient(160deg, #d6e4f5 0%, #eaf0f9 60%, #dde7f5 100%);
+      position: relative;
+    }
+
+    .hero-top::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary), var(--accent), var(--primary));
     }
 
     .hero-band {
       width: 100%;
-      height: 260px;
-      overflow: hidden;
       line-height: 0;
+      position: relative;
     }
 
     .hero-band img {
       width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
+      height: auto;
       display: block;
+      margin-top: -30px;
     }
 
     .hero-dept {
-      font-size: 0.85rem;
-      color: #5a7aa8;
-      letter-spacing: 0.06em;
-      margin-bottom: 12px;
+      font-size: 1rem;
+      color: #3a5a88;
+      letter-spacing: 0.1em;
+      margin-bottom: 20px;
+      font-weight: 500;
     }
 
     .hero h1 {
-      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-size: clamp(2rem, 5vw, 3.4rem);
       font-weight: 700;
       color: var(--primary);
-      letter-spacing: 0.04em;
-      margin-bottom: 10px;
-      line-height: 1.4;
+      letter-spacing: 0.08em;
+      margin-bottom: 18px;
+      line-height: 1.5;
     }
 
-    .hero-en {
-      font-size: 1.35rem;
-      color: var(--primary);
-      margin-bottom: 0;
-      font-family: 'Playfair Display', Georgia, serif;
-      font-style: italic;
-      font-weight: 600;
-      letter-spacing: 0.04em;
+    .hero-divider {
+      width: 120px;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--accent) 30%, var(--primary) 70%, transparent);
+      margin: 0 auto 18px;
+      border-radius: 2px;
     }
 
     /* ===== SECTIONS ===== */
@@ -151,7 +165,7 @@
       color: var(--accent);
       margin-bottom: 40px;
       letter-spacing: 0.08em;
-      font-family: 'Playfair Display', Georgia, serif;
+      font-family: 'EB Garamond', Georgia, serif;
       font-style: italic;
       font-weight: 600;
       display: block;
@@ -251,6 +265,23 @@
     }
 
     /* ===== MEMBERS ===== */
+    .members-group {
+      margin-bottom: 40px;
+    }
+
+    .members-group-label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-family: 'EB Garamond', Georgia, serif;
+      font-style: italic;
+      border-left: 3px solid var(--accent);
+      padding-left: 10px;
+      margin-bottom: 16px;
+    }
+
     .members-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -275,9 +306,45 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 2rem;
       color: var(--accent);
       border: 2px solid var(--border);
+      overflow: hidden;
+    }
+
+    .member-avatar svg {
+      width: 48px;
+      height: 48px;
+    }
+
+    .member-card.female {
+      border-top: 3px solid #c9a0a0;
+    }
+
+    .member-card.male {
+      border-top: 3px solid #4a7aa8;
+    }
+
+    .member-card.male .member-avatar {
+      border-color: #4a7aa8;
+    }
+
+    .member-card.female .member-avatar {
+      background: #f2e0e0;
+      border-color: #d4a8a8;
+      color: #a06060;
+    }
+
+    .member-card.female .member-name {
+      color: #6b3a3a;
+    }
+
+    .member-card.female .member-role {
+      color: #a06060;
+    }
+
+    .member-card.female .member-field {
+      background: #f5eaea;
+      color: #a06060;
     }
 
     .member-name {
@@ -291,7 +358,7 @@
       font-size: 0.85rem;
       color: var(--accent);
       margin-bottom: 8px;
-      font-family: 'Playfair Display', Georgia, serif;
+      font-family: 'EB Garamond', Georgia, serif;
       font-style: italic;
       font-weight: 600;
     }
@@ -300,9 +367,10 @@
       font-size: 0.78rem;
       color: var(--accent);
       background: var(--light-accent);
-      padding: 2px 10px;
+      padding: 4px 10px;
       border-radius: 20px;
       display: inline-block;
+      line-height: 1.4;
     }
 
     /* ===== PUBLICATIONS ===== */
@@ -322,7 +390,7 @@
       color: var(--accent);
       font-style: italic;
       font-weight: 700;
-      font-family: 'Playfair Display', Georgia, serif;
+      font-family: 'EB Garamond', Georgia, serif;
       font-size: 1rem;
     }
 
@@ -409,8 +477,11 @@
 <header>
   <div class="header-inner">
     <div class="header-logo">
-      遺伝子・血液情報検査学
-      <span>群馬パース大学 大学院 保健科学研究科</span>
+      <img src="HP2.png" alt="GHD Lab ロゴ">
+      <div>
+        遺伝子・血液情報検査学
+        <span>群馬パース大学 大学院 保健科学研究科</span>
+      </div>
     </div>
     <nav>
       <a href="#news">ニュース</a>
@@ -427,7 +498,7 @@
   <div class="hero-top">
     <p class="hero-dept">群馬パース大学 大学院 保健科学研究科 病因・病態検査学領域</p>
     <h1>遺伝子・血液情報検査学</h1>
-    <p class="hero-en">Laboratory of Genetic &amp; Hematological Information Science</p>
+    <div class="hero-divider"></div>
   </div>
   <div class="hero-band">
     <img src="HP.png" alt="Hematology and Blood Research Lab">
@@ -442,19 +513,14 @@
     <p class="section-subtitle">News &amp; Topics</p>
     <ul class="news-list">
       <li>
-        <span class="news-date">2026.03.20</span>
+        <span class="news-date">2026.04.01</span>
         <span class="news-badge">更新</span>
         <span class="news-text">研究室ホームページを開設しました。</span>
       </li>
       <li>
         <span class="news-date">2026.04.01</span>
         <span class="news-badge">お知らせ</span>
-        <span class="news-text">2026年度 大学院生の募集を開始します。研究内容に関心のある方はお気軽にお問い合わせください。</span>
-      </li>
-      <li>
-        <span class="news-date">2026.03.01</span>
-        <span class="news-badge">論文</span>
-        <span class="news-text">免疫老化指標に関する論文を投稿しました（掲載決定次第お知らせします）。</span>
+        <span class="news-text">2027年度 大学院生の募集を開始します。研究内容に関心のある方はお気軽にお問い合わせください。</span>
       </li>
     </ul>
   </div>
@@ -479,14 +545,26 @@
         <span class="research-tag">Immune Age</span>
         <span class="research-tag">Flow Cytometry</span>
         <span class="research-tag">単球・好中球</span>
-        <span class="research-tag">表面分子解析</span>
+        <span class="research-tag">細胞表面マーカー</span>
+        <span class="research-tag">Inflammaging</span>
       </div>
     </div>
 
-    <!-- 追加研究テーマ（プレースホルダー） -->
-    <div class="research-card" style="border-left-color: #5ba3d9; opacity: 0.7;">
-      <h3>② 研究テーマ（準備中）</h3>
-      <p>現在、追加の研究テーマを準備中です。詳細が決まり次第、こちらに掲載します。</p>
+    <div class="research-card">
+      <h3>② 血小板・赤血球の機能変化と老化・輸血医学</h3>
+      <ul class="research-points">
+        <li>血小板活性化・可逆的凝集の機序解明</li>
+        <li>赤血球CD47と保存障害の評価</li>
+        <li>血液製剤の品質評価指標の開発</li>
+      </ul>
+      <div style="margin-top: 16px;">
+        <span class="research-tag">transfusion</span>
+        <span class="research-tag">RBC</span>
+        <span class="research-tag">platelet</span>
+        <span class="research-tag">血小板活性化</span>
+        <span class="research-tag">赤血球CD47</span>
+        <span class="research-tag">血液製剤</span>
+      </div>
     </div>
   </div>
 </section>
@@ -496,30 +574,98 @@
   <div class="section-inner">
     <h2 class="section-title">メンバー</h2>
     <p class="section-subtitle">Members</p>
-    <div class="members-grid">
-      <div class="member-card">
-        <div class="member-avatar">👤</div>
-        <div class="member-name">氏名（准教授）</div>
-        <div class="member-role">准教授 / Associate Professor</div>
-        <div class="member-field">免疫老化・Flow Cytometry</div>
+    <!-- 教授 -->
+    <div class="members-group">
+      <div class="members-group-label">教授 / Faculty</div>
+      <div class="members-grid">
+        <div class="member-card female">
+          <div class="member-avatar"><svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="24" cy="16" r="9" fill="#c9a0a0"/>
+              <path d="M10 44c0-8.837 6.268-16 14-16s14 7.163 14 16" fill="#c9a0a0"/>
+            </svg></div>
+          <div class="member-name">林 由里子</div>
+          <div class="member-role">教授 / Professor</div>
+          <div class="member-field">免疫老化・Flow Cytometry</div>
+        </div>
       </div>
-      <div class="member-card">
-        <div class="member-avatar">👤</div>
-        <div class="member-name">大学院生 A</div>
-        <div class="member-role">博士課程</div>
-        <div class="member-field">免疫年齢指標開発</div>
+    </div>
+
+    <!-- 院生 -->
+    <div class="members-group">
+      <div class="members-group-label">大学院生 / Graduate Students</div>
+      <div class="members-grid">
+        <div class="member-card male">
+          <div class="member-avatar"><svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="24" cy="16" r="9" fill="#4a7aa8"/>
+              <path d="M10 44c0-8.837 6.268-16 14-16s14 7.163 14 16" fill="#4a7aa8"/>
+            </svg></div>
+          <div class="member-name">梶田 幸夫</div>
+          <div class="member-role">博士前期課程2年 / Master's Program</div>
+          <div class="member-field">血液製剤の品質評価指標の開発</div>
+        </div>
+        <div class="member-card male">
+          <div class="member-avatar"><svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="24" cy="16" r="9" fill="#4a7aa8"/>
+              <path d="M10 44c0-8.837 6.268-16 14-16s14 7.163 14 16" fill="#4a7aa8"/>
+            </svg></div>
+          <div class="member-name">宮﨑 愛斗</div>
+          <div class="member-role">博士前期課程1年 / Master's Program</div>
+          <div class="member-field">好中球のライフサイクルリズムと日内変動の解析</div>
+        </div>
       </div>
-      <div class="member-card">
-        <div class="member-avatar">👤</div>
-        <div class="member-name">大学院生 B</div>
-        <div class="member-role">修士課程</div>
-        <div class="member-field">表面分子解析</div>
+    </div>
+
+    <!-- 学部生 -->
+    <div class="members-group">
+      <div class="members-group-label">学部生 / Undergraduate Students</div>
+      <div class="members-grid">
+        <div class="member-card female">
+          <div class="member-avatar"><svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="24" cy="16" r="9" fill="#c9a0a0"/>
+              <path d="M10 44c0-8.837 6.268-16 14-16s14 7.163 14 16" fill="#c9a0a0"/>
+            </svg></div>
+          <div class="member-name">荒井 愛佳</div>
+          <div class="member-role">学部4年 / Undergraduate</div>
+          <div class="member-field">健常成人における単球刺激応答性の検討</div>
+        </div>
+        <div class="member-card female">
+          <div class="member-avatar"><svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="24" cy="16" r="9" fill="#c9a0a0"/>
+              <path d="M10 44c0-8.837 6.268-16 14-16s14 7.163 14 16" fill="#c9a0a0"/>
+            </svg></div>
+          <div class="member-name">佐々木 愛佳</div>
+          <div class="member-role">学部4年 / Undergraduate</div>
+          <div class="member-field">健常成人における単球刺激応答性の検討</div>
+        </div>
       </div>
-      <div class="member-card" style="border: 2px dashed var(--border); background: #f2f5fb;">
-        <div class="member-avatar" style="background: #f0f0f0; color: #aaa;">＋</div>
-        <div class="member-name" style="color: var(--muted);">募集中</div>
-        <div class="member-role">大学院生</div>
-        <div class="member-field">お問い合わせください</div>
+      <div class="members-grid" style="margin-top: 16px;">
+        <div class="member-card female">
+          <div class="member-avatar"><svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="24" cy="16" r="9" fill="#c9a0a0"/>
+              <path d="M10 44c0-8.837 6.268-16 14-16s14 7.163 14 16" fill="#c9a0a0"/>
+            </svg></div>
+          <div class="member-name">野口 琴羽</div>
+          <div class="member-role">学部4年 / Undergraduate</div>
+          <div class="member-field">肺機能低下と血管老化を結ぶ<br>単球免疫老化機構の解明</div>
+        </div>
+        <div class="member-card female">
+          <div class="member-avatar"><svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="24" cy="16" r="9" fill="#c9a0a0"/>
+              <path d="M10 44c0-8.837 6.268-16 14-16s14 7.163 14 16" fill="#c9a0a0"/>
+            </svg></div>
+          <div class="member-name">深澤 希望</div>
+          <div class="member-role">学部4年 / Undergraduate</div>
+          <div class="member-field">肺機能低下と血管老化を結ぶ<br>単球免疫老化機構の解明</div>
+        </div>
+        <div class="member-card female">
+          <div class="member-avatar"><svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="24" cy="16" r="9" fill="#c9a0a0"/>
+              <path d="M10 44c0-8.837 6.268-16 14-16s14 7.163 14 16" fill="#c9a0a0"/>
+            </svg></div>
+          <div class="member-name">真部 六花</div>
+          <div class="member-role">学部4年 / Undergraduate</div>
+          <div class="member-field">肺機能低下と血管老化を結ぶ<br>単球免疫老化機構の解明</div>
+        </div>
       </div>
     </div>
   </div>
@@ -532,22 +678,95 @@
     <p class="section-subtitle">Publications</p>
     <ul class="pub-list">
       <li>
-        <span class="pub-year">2026</span>
-        著者名, 著者名, et al. "タイトル（掲載決定次第更新）."
-        <span class="pub-journal">Journal Name</span>, in press.
+        <span class="pub-year">2025</span>
+        Hayashi Y, Miyazaki M, Kimura R, Arai R, Takada M, Takahashi A, Kimura H.
+        "Reversible Platelet Aggregation Induced by Low-Temperature Storage in Heparinized Whole Blood Samples."
+        <span class="pub-journal">Hematology Reports</span>, 2025.
       </li>
       <li>
         <span class="pub-year">2025</span>
-        著者名, 著者名, et al. "免疫老化関連論文タイトル例."
-        <span class="pub-journal">Journal of Immunology Research</span>, Vol.XX, pp.XXX–XXX.
+        Kimura R, Hayashi Y, et al.
+        "Reinfection Mechanisms of Various Viruses and Their Societal Implications."
+        <span class="pub-journal">Disease Biology, Genetics, and Socioecology</span>, 4(4), 2025.
+      </li>
+      <li>
+        <span class="pub-year">2025</span>
+        Otani K, Hayashi Y, et al.
+        "Phylogenomic Analyses of the Hemagglutinin-Neuraminidase (HN) Gene in Human Parainfluenza Virus Type 4 Isolates in Japan."
+        <span class="pub-journal">Microorganisms</span>, 2025.
       </li>
       <li>
         <span class="pub-year">2024</span>
-        著者名, 著者名, et al. "Flow cytometryを用いた免疫年齢評価の論文タイトル例."
-        <span class="pub-journal">Clinical Immunology</span>, Vol.XX, pp.XXX–XXX.
+        高橋あゆ子, 林由里子, 他.
+        「蛍光酵素免疫測定法によるB型肝炎ワクチン接種後の免疫獲得評価に関する研究」
+        <span class="pub-journal">臨床化学</span>, 54, pp.234-238, 2024.
+      </li>
+      <li>
+        <span class="pub-year">2024</span>
+        Kimura R, Hayashi Y, et al.
+        "Molecular Evolutionary Analyses of Shiga toxin type 2 subunit A Gene."
+        <span class="pub-journal">Microorganisms</span>, 2024.
+      </li>
+      <li>
+        <span class="pub-year">2024</span>
+        林由里子.
+        「米国臨床検査技師養成プログラムのメディカルダイレクターを招いた英語によるオンライン講演の開催報告」
+        <span class="pub-journal">臨床検査学教育</span>, Vol.16, No.2, pp.106-109, 2024.
+      </li>
+      <li>
+        <span class="pub-year">2024</span>
+        Mizukoshi F, Hayashi Y, et al.
+        "Molecular Evolutionary Analyses of the Fusion Genes in Human Parainfluenza Virus Type 4."
+        <span class="pub-journal">Microorganisms</span>, 2024.
+      </li>
+      <li>
+        <span class="pub-year">2024</span>
+        Dofuku M, Hayashi Y, et al.
+        "Severe hemolytic anemia in a glucose-6-phosphate dehydrogenase-deficient child with COVID-19."
+        <span class="pub-journal">Pediatrics International</span>, 66(1), e15717, 2024.
+      </li>
+      <li>
+        <span class="pub-year">2023</span>
+        Anzai T, Hayashi Y, et al.
+        "Infant case of severe immune thrombocytopenia caused by COVID‐19 infection."
+        <span class="pub-journal">eJHaem</span>, 2023.
+      </li>
+      <li>
+        <span class="pub-year">2023</span>
+        Kimura H, Hayashi Y, et al.
+        "Pathogen Profiles in Outpatients with Non-COVID-19."
+        <span class="pub-journal">Microorganisms</span>, 11(9), pp.2142-2142, 2023.
+      </li>
+      <li>
+        <span class="pub-year">2023</span>
+        Takahashi T, Hayashi Y, et al.
+        "Molecular Evolutionary Analyses of the RNA-Dependent RNA Polymerase (RdRp) Region and VP1 Gene in Human Norovirus."
+        <span class="pub-journal">Viruses</span>, 15(7), 2023.
+      </li>
+      <li>
+        <span class="pub-year">2023</span>
+        Takahashi T, Hayashi Y, et al.
+        "Molecular Evolutionary Analyses of the Fusion Protein Gene in Human Respirovirus 1."
+        <span class="pub-journal">Virus Research</span>, 333, pp.199142, 2023.
+      </li>
+      <li>
+        <span class="pub-year">2022</span>
+        原田和彦, 林由里子, 他.
+        「当院における新型コロナウイルス感染症の疫学および分子疫学」
+        <span class="pub-journal">群馬医学会</span>, 116, pp.123-128, 2022.
+      </li>
+      <li>
+        <span class="pub-year">2022</span>
+        Hayashi Y, Sada M, et al.
+        "Rhinovirus Infection and Virus-Induced Asthma."
+        <span class="pub-journal">Viruses</span>, 14(12), pp.2616-2616, 2022.
       </li>
     </ul>
-    <p style="font-size: 0.8rem; color: var(--muted); margin-top: 20px;">※ 実際の論文情報に随時更新してください。</p>
+    <p style="margin-top: 24px;">
+      <a href="https://researchmap.jp/yuriri" target="_blank" style="display: inline-block; background: var(--primary); color: #fff; font-size: 0.82rem; padding: 8px 20px; border-radius: 4px; text-decoration: none; letter-spacing: 0.05em;">
+        researchmap で詳細を見る →
+      </a>
+    </p>
   </div>
 </section>
 
@@ -565,7 +784,8 @@
         <dt>交通</dt>
         <dd>JR高崎線・新幹線「高崎駅」よりバスまたはタクシー</dd>
         <dt>お問い合わせ</dt>
-        <dd>メールアドレス：<a href="mailto:lab@gu-parse.ac.jp" style="color: var(--accent);">lab@gu-parse.ac.jp</a><br>
+        <dd>メールアドレス：hayashi[at]paz.ac.jp<br>
+        <span style="font-size: 0.8rem; color: var(--muted);">※ 送信時は [at] を @ に変換してください</span><br>
         （大学院進学・研究内容に関するご質問は随時受け付けています）</dd>
       </dl>
       <div class="map-placeholder">
