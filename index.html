@@ -217,6 +217,41 @@
       box-shadow: 0 2px 8px rgba(0,0,0,0.04);
       transition: box-shadow 0.2s;
     }
+    .research-card-inner {
+      display: flex;
+      gap: 28px;
+      align-items: flex-start;
+    }
+    .research-card-text {
+      flex: 1;
+    }
+    .research-card-img {
+      width: 300px;
+      flex-shrink: 0;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .research-card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 10px;
+      display: block;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .research-card-img img:hover {
+      transform: scale(1.05) translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.2);
+    }
+    @media (max-width: 640px) {
+      .research-card-inner {
+        flex-direction: column;
+      }
+      .research-card-img {
+        width: 100%;
+        max-height: 200px;
+      }
+    }
 
     .research-card:hover {
       box-shadow: 0 4px 18px rgba(30,60,100,0.12);
@@ -368,9 +403,10 @@
       color: var(--accent);
       background: var(--light-accent);
       padding: 4px 10px;
-      border-radius: 20px;
-      display: inline-block;
-      line-height: 1.4;
+      border-radius: 12px;
+      display: block;
+      line-height: 1.6;
+      text-align: center;
     }
 
     /* ===== PUBLICATIONS ===== */
@@ -402,6 +438,114 @@
       border-radius: 4px;
       margin-right: 8px;
       font-weight: 700;
+    }
+
+    /* ===== GALLERY ===== */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 24px;
+    }
+    .gallery-card {
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+      background: var(--white);
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .gallery-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 28px rgba(0,0,0,0.15);
+    }
+    .gallery-img-wrap {
+      position: relative;
+      overflow: hidden;
+      height: 200px;
+    }
+    .gallery-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s;
+    }
+    .gallery-card:hover .gallery-img-wrap img {
+      transform: scale(1.05);
+    }
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(30,50,90,0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s;
+      font-size: 2rem;
+    }
+    .gallery-card:hover .gallery-overlay {
+      opacity: 1;
+    }
+    .gallery-info {
+      padding: 12px 16px;
+    }
+    .gallery-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--primary);
+    }
+    .gallery-date {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+    /* LIGHTBOX */
+    #lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+    }
+    #lightbox.active {
+      display: flex;
+    }
+    .lightbox-inner {
+      position: relative;
+      max-width: 90vw;
+      max-height: 90vh;
+      text-align: center;
+    }
+    #lightbox-img {
+      max-width: 85vw;
+      max-height: 75vh;
+      border-radius: 10px;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.6);
+    }
+    .lightbox-close {
+      position: absolute;
+      top: -40px;
+      right: 0;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 1.6rem;
+      cursor: pointer;
+    }
+    .lightbox-caption {
+      margin-top: 14px;
+      color: #fff;
+    }
+    #lightbox-title {
+      font-size: 1rem;
+      font-weight: 600;
+    }
+    #lightbox-date {
+      font-size: 0.85rem;
+      opacity: 0.7;
+      margin-top: 4px;
     }
 
     /* ===== ACCESS ===== */
@@ -559,37 +703,51 @@
     <p class="section-subtitle">Research</p>
 
     <div class="research-card">
-      <h3>① 免疫老化（Immunosenescence）の定量化と可視化</h3>
-      <p>加齢に伴う免疫機能の変化を末梢血レベルで捉え、客観的・定量的に評価する手法の開発を行っています。</p>
-      <ul class="research-points">
-        <li>末梢血細胞を用いた免疫年齢（Immune Age）の指標開発</li>
-        <li>単球・好中球の表面分子変動による老化評価</li>
-        <li>Flow cytometry データに基づく動的免疫老化指標の構築</li>
-      </ul>
-      <div style="margin-top: 16px;">
-        <span class="research-tag">Immunosenescence</span>
-        <span class="research-tag">Immune Age</span>
-        <span class="research-tag">Flow Cytometry</span>
-        <span class="research-tag">単球・好中球</span>
-        <span class="research-tag">細胞表面マーカー</span>
-        <span class="research-tag">Inflammaging</span>
+      <div class="research-card-inner">
+        <div class="research-card-text">
+          <h3>Ⅰ. 免疫老化（Immunosenescence）の定量化と可視化</h3>
+          <p>加齢に伴う免疫機能の変化を末梢血レベルで捉え、客観的・定量的に評価する手法の開発を行っています。</p>
+          <ul class="research-points">
+            <li>末梢血細胞を用いた免疫年齢（Immune Age）の指標開発</li>
+            <li>単球・好中球の表面分子変動による老化評価</li>
+            <li>Flow cytometry データに基づく動的免疫老化指標の構築</li>
+          </ul>
+          <div style="margin-top: 16px;">
+            <span class="research-tag">Immunosenescence</span>
+            <span class="research-tag">Immune Age</span>
+            <span class="research-tag">Flow Cytometry</span>
+            <span class="research-tag">単球・好中球</span>
+            <span class="research-tag">細胞表面マーカー</span>
+            <span class="research-tag">Inflammaging</span>
+          </div>
+        </div>
+        <div class="research-card-img">
+          <img src="research1.png.png" alt="免疫老化イメージ">
+        </div>
       </div>
     </div>
 
     <div class="research-card">
-      <h3>② 血小板・赤血球の機能変化と老化・輸血医学</h3>
-      <ul class="research-points">
-        <li>血小板活性化・可逆的凝集の機序解明</li>
-        <li>赤血球CD47と保存障害の評価</li>
-        <li>血液製剤の品質評価指標の開発</li>
-      </ul>
-      <div style="margin-top: 16px;">
-        <span class="research-tag">transfusion</span>
-        <span class="research-tag">RBC</span>
-        <span class="research-tag">platelet</span>
-        <span class="research-tag">血小板活性化</span>
-        <span class="research-tag">赤血球CD47</span>
-        <span class="research-tag">血液製剤</span>
+      <div class="research-card-inner">
+        <div class="research-card-text">
+          <h3>Ⅱ. 血小板・赤血球の機能変化と老化・輸血医学</h3>
+          <ul class="research-points">
+            <li>血小板活性化・可逆的凝集の機序解明</li>
+            <li>赤血球CD47と保存障害の評価</li>
+            <li>血液製剤の品質評価指標の開発</li>
+          </ul>
+          <div style="margin-top: 16px;">
+            <span class="research-tag">transfusion</span>
+            <span class="research-tag">RBC</span>
+            <span class="research-tag">platelet</span>
+            <span class="research-tag">血小板活性化</span>
+            <span class="research-tag">赤血球CD47</span>
+            <span class="research-tag">血液製剤</span>
+          </div>
+        </div>
+        <div class="research-card-img">
+          <img src="research2.png.png" alt="輸血医学イメージ">
+        </div>
       </div>
     </div>
   </div>
@@ -652,7 +810,7 @@
             </svg></div>
           <div class="member-name">荒井 愛佳</div>
           <div class="member-role">学部4年 / Undergraduate</div>
-          <div class="member-field">健常成人における単球刺激応答性の検討</div>
+          <div class="member-field">健常成人における<br>単球刺激応答性の検討</div>
         </div>
         <div class="member-card female">
           <div class="member-avatar"><svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -661,7 +819,7 @@
             </svg></div>
           <div class="member-name">佐々木 愛佳</div>
           <div class="member-role">学部4年 / Undergraduate</div>
-          <div class="member-field">健常成人における単球刺激応答性の検討</div>
+          <div class="member-field">健常成人における<br>単球刺激応答性の検討</div>
         </div>
       </div>
       <div class="members-grid" style="margin-top: 16px;">
@@ -796,6 +954,39 @@
   </div>
 </section>
 
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="section-inner">
+    <h2 class="section-title">アルバム</h2>
+    <p class="section-subtitle">Gallery</p>
+    <div class="gallery-grid">
+
+      <div class="gallery-card" onclick="openLightbox('IMG_2025_1.JPG', '2025年度研究室メンバー', '')">
+        <div class="gallery-img-wrap">
+          <img src="IMG_2025_1.JPG" alt="2025年度研究室メンバー">
+          <div class="gallery-overlay"><span>🔍</span></div>
+        </div>
+        <div class="gallery-info">
+          <div class="gallery-title">2025年度研究室メンバー</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" onclick="closeLightbox()">
+  <div class="lightbox-inner" onclick="event.stopPropagation()">
+    <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+    <img id="lightbox-img" src="" alt="">
+    <div class="lightbox-caption">
+      <div id="lightbox-title"></div>
+      <div id="lightbox-date"></div>
+    </div>
+  </div>
+</div>
+
 <!-- ACCESS -->
 <section id="access">
   <div class="section-inner">
@@ -814,16 +1005,16 @@
         <span style="font-size: 0.8rem; color: var(--muted);">※ 送信時は [at] を @ に変換してください</span><br>
         （大学院進学・研究内容に関するご質問は随時受け付けています）</dd>
       </dl>
-      <div class="map-placeholder">
-        <svg width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-          <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
-          <circle cx="12" cy="9" r="2.5"/>
-        </svg>
-        <span>群馬パース大学<br>高崎市問屋町1-7-1</span>
-        <a href="https://maps.google.com/?q=群馬パース大学" target="_blank"
-           style="color: var(--accent); font-size: 0.8rem; text-decoration: underline;">
-          Google マップで開く
-        </a>
+      <div style="border-radius: 12px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.1);">
+        <iframe
+          src="https://maps.google.com/maps?q=群馬パース大学+高崎市問屋町1-7-1&output=embed&hl=ja&z=15"
+          width="100%"
+          height="320"
+          style="border:0; display:block;"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
       </div>
     </div>
   </div>
@@ -837,5 +1028,21 @@
   &copy; 2026 遺伝子・血液情報検査学研究室. All rights reserved.
 </footer>
 
+<script>
+  function openLightbox(src, title, date) {
+    document.getElementById('lightbox-img').src = src;
+    document.getElementById('lightbox-title').textContent = title;
+    document.getElementById('lightbox-date').textContent = date;
+    document.getElementById('lightbox').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeLightbox();
+  });
+</script>
 </body>
 </html>
