@@ -206,6 +206,17 @@
       font-size: 0.925rem;
     }
 
+    a.news-text {
+      color: var(--text);
+      text-decoration: none;
+      border-bottom: 1px dashed var(--accent);
+      transition: color 0.2s;
+    }
+
+    a.news-text:hover {
+      color: var(--accent);
+    }
+
     /* ===== RESEARCH ===== */
     .research-card {
       background: var(--white);
@@ -684,14 +695,19 @@
     <p class="section-subtitle">News &amp; Topics</p>
     <ul class="news-list">
       <li>
-        <span class="news-date">2026.04.01</span>
-        <span class="news-badge">更新</span>
-        <span class="news-text">研究室ホームページを開設しました。</span>
+        <span class="news-date">2026.04.06</span>
+        <span class="news-badge">アルバム</span>
+        <a class="news-text" href="#gallery">2026年度研究室メンバーの写真を掲載しました。</a>
       </li>
       <li>
         <span class="news-date">2026.04.01</span>
         <span class="news-badge">お知らせ</span>
-        <span class="news-text">2027年度 大学院生の募集を開始します。研究内容に関心のある方はお気軽にお問い合わせください。</span>
+        <a class="news-text" href="#access">2027年度 大学院生の募集を開始します。研究内容に関心のある方はお気軽にお問い合わせください。</a>
+      </li>
+      <li>
+        <span class="news-date">2026.04.01</span>
+        <span class="news-badge">更新</span>
+        <span class="news-text">HPを開設しました。</span>
       </li>
     </ul>
   </div>
@@ -969,6 +985,17 @@
         </div>
         <div class="gallery-info">
           <div class="gallery-title">2025年度研究室メンバー</div>
+        </div>
+      </div>
+
+      <div class="gallery-card" onclick="openLightbox('IMG_2026_2.JPG', '2026年度研究室メンバー', '2026.04.06')">
+        <div class="gallery-img-wrap">
+          <img src="IMG_2026_2.JPG" alt="2026年度研究室メンバー">
+          <div class="gallery-overlay"></div>
+        </div>
+        <div class="gallery-info">
+          <div class="gallery-title">2026年度研究室メンバー</div>
+          <div class="gallery-date">2026.04.06</div>
         </div>
       </div>
 
